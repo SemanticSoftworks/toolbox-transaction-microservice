@@ -57,6 +57,13 @@
 			<artifactId>bonecp-spring</artifactId>
 			<version>0.8.0.RELEASE</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.paypal.api.plattform</groupId>
+			<artifactId>rest-profile-ppas</artifactId>
+			<type>pom</type>
+		</dependency>
+
 	</dependencies>
 
 	<build>
