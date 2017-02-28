@@ -39,6 +39,7 @@ public class TransactionController {
             transactionDTO.setDescription(transaction.getDescription());
             transactionDTO.setSum(transaction.getSum());
             transactionDTO.setDate(transaction.getDate() != null ? transaction.getDate().getTime().toString() : null);
+            transactionDTO.setUserId(transaction.getUserId());
         }
         return new ResponseEntity<>(transactionDTO, HttpStatus.OK);
     }
@@ -79,6 +80,8 @@ public class TransactionController {
             transactionDTO.setSum(t.getSum());
             transactionDTO.setDate(t.getDate() != null? t.getDate().getTime().toString() : null);
             transactionDTO.setDescription(t.getDescription());
+            transactionDTO.setUserId(t.getUserId());
+
             transactionDTOList.add(transactionDTO);
         }
         transactionListingDTO.setTransactionDTOList(transactionDTOList);
@@ -101,6 +104,7 @@ public class TransactionController {
             transactionDTO.setDescription(transaction.getDescription());
             transactionDTO.setTransactionId(transaction.getTransactionId());
             transactionDTO.setSum(transaction.getSum());
+            transactionDTO.setUserId(transaction.getUserId());
 
             return new ResponseEntity<>(transactionDTO, HttpStatus.OK);
         }
@@ -117,6 +121,7 @@ public class TransactionController {
             transactionDTO.setSum(transaction.getSum());
             transactionDTO.setDescription(transaction.getDescription());
             transactionDTO.setDate(transaction.getDate() != null ? transaction.getDate().getTime().toString() : null);
+            transactionDTO.setUserId(transaction.getUserId());
 
             return new ResponseEntity<>(transactionDTO, HttpStatus.OK);
         }
