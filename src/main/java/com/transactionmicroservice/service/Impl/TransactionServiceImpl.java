@@ -9,12 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by dani on 2017-02-23.
@@ -46,33 +42,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> findTransactions(Long userId, Long startPosition, Long endPosition) {
         return transactionCustomRepository.getTransactions(userId,startPosition, endPosition);
-    }
-
-    @Override
-    public Long getPermission(String username, String password) {
-        Long userId=0L;
-        Map<String, String> params = new HashMap<String, String>();
-        try {
-            String url = "http://localhost:8091/user/?username="+username+"&"+"password="+password;
-            RestTemplate restTemplate = new RestTemplate();
-
-            userId = (restTemplate.getForObject(url, Long.class , params));
-        } catch(HttpClientErrorException e ){ logger.info("CATCH bad request getPermission!"); return null; }
-
-        return userId;
-    }
-
-    @Override
-    public Long getAdminPermission(String username, String password) {
-        Long userId=0L;
-        Map<String, String> params = new HashMap<String, String>();
-        try {
-            String url = "http://localhost:8091/user/admin/permission?username="+username+"&"+"password="+password;
-            RestTemplate restTemplate = new RestTemplate();
-            userId = (restTemplate.getForObject(url, Long.class , params));
-        } catch(HttpClientErrorException e ){ logger.info("CATCH bad request getPermission!"); return null; }
-
-        return userId;
     }
 
     @Override
