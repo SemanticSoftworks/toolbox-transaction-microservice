@@ -1,0 +1,19 @@
+#Configuring mysql manually, currently base for automation
+
+# get docker machine ip
+docker-machine ip #192.168.99.100
+
+# Create container from base image
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+
+docker run -p 3306:3306 --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+
+# find ip
+docker inspect --format "{{.NetworkSettings.IPAddress}}" some-mysql
+
+docker run -it --rm mysql mysql -h172.17.0.2 -uroot -p # ip is from prev. cmd,
+
+# create database
+create database db_mjukvaru_transactionmicroservice;
+
+#done...

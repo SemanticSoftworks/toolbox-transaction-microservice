@@ -1,0 +1,15 @@
+version: "3.0"
+services:
+  web:
+    build: .
+    ports:
+      - "8092:8092"
+    #links:
+    #  - db
+    #volumes:
+    depends_on:
+          - "db"
+  db:
+    build: ./mysql
+    ports:
+      - "3308:3306"
