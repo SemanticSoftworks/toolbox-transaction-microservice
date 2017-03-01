@@ -5,11 +5,13 @@ services:
     ports:
       - "8092:8092"
     #links:
-    #  - db
+    #  - "db:database"
     #volumes:
     depends_on:
           - "db"
   db:
+    #image: abc
     build: ./mysql
     ports:
       - "3308:3306"
+      - "3306:3306" # used by web
