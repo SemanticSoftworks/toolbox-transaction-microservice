@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  transactionweb:
+    build: .
+    ports:
+      - "8092:8092"
+    depends_on:
+      - "transactiondb"
+  transactiondb:
+    build: ./mysql
+    volumes:
+      - /home/docker/SemanticSoftworks/photo-microservice-db:/var/lib/mysql
+    ports:
+      - "3308:3308"
