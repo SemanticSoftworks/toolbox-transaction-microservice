@@ -6,9 +6,11 @@ services:
       - "8092:8092"
     depends_on:
       - "transactiondb"
+    restart: always
   transactiondb:
     build: ./mysql
     volumes:
       - /home/docker/SemanticSoftworks/photo-microservice-db:/var/lib/mysql
     ports:
       - "3308:3308"
+    restart: always
